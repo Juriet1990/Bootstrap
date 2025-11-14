@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nippon World</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <!-- Link Font per Sawarabi Gothic -->
+  <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <style>
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background-image: url("background.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      font-family: 'Sawarabi Gothic', sans-serif;
+    }
+
+    section, .container-section {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    section.home, section.programma, section.biglietti {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    section.recensioni, section.contatti {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .btn-danger {
+      background-color: #ff69b4;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .btn-danger:hover {
+      transform: scale(1.05);
+      background-color: #ff85c1;
+    }
+
+    .card {
+      border: 2px dashed #ffb6c1;
+      background-color: #fff0f5;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(255, 182, 193, 0.3);
+    }
+
+    .close {
+      font-size: 1.5rem;
+      cursor: pointer;
+      position: absolute;
+      top: 5px;
+      right: 10px;
+    }
+
+    .disponibilita-text {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .logo {
+      margin-right: 15px;
+    }
+
+    .banner-img {
+      border-radius: 25px;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar {
+      background: linear-gradient(to right, #ffe0f0, #fff0f6);
+      border-bottom: 3px dashed #ffb6c1;
+      box-shadow: 0 4px 10px rgba(255, 182, 193, 0.3);
+    }
+
+    [id^="scrollspyHeading"] {
+      scroll-margin-top: 100px;
+    }
+
+    .welcome p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      text-align: justify;
+      padding: 0 1rem;
+    }
+
+    .welcome h2, .welcome h4 {
+      text-align: center;
+    }
+
+    .welcome {
+      padding: 2rem 1rem;
+    }
+
+    .card {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .aboutus {
+      text-align: center;
+    }
+
+    .about {
+      text-align: justify;
+    }
+
+    .reviews {
+      text-align: center;
+    }
+
+    .biglietti {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    body {
+      padding-top: 70px;
+      scroll-behavior: smooth;
+    }
+
+    .countdown-box {
+      background-color: #fff0f6;
+      border: 2px dashed #ff69b4;
+      border-radius: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+      box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
+      font-family: 'Sawarabi Gothic', sans-serif;
+    }
+
+    .time-box {
+      background-color: #ffe0f0;
+      padding: 10px 15px;
+      border-radius: 12px;
+      font-size: 1.5rem;
+      color: #ff1493;
+      min-width: 70px;
+      box-shadow: inset 0 0 5px rgba(255, 105, 180, 0.2);
+    }
+
+    .time-box span {
+      font-weight: bold;
+      font-size: 2rem;
+      display: block;
+    }
+
+    .time-box small {
+      font-size: 0.8rem;
+      color: #c71585;
+    }
+
+    .scrollspy-example {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .card {
+      width: 18rem;
+      margin: 15px auto;
+    }
+
+    .shogun-list {
+      padding-left: 1.2rem;
+      margin-top: 0.5rem;
+      text-align: left;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      list-style-type: disc;
+    }
+
+    .program-day-card ul {
+      padding-left: 1.5rem;
+    }
+
+    .program-day-card li {
+      text-align: left;
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .program-day-card li strong {
+      display: inline-block;
+      width: 4em;
+    }
+
+    .form-check {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .form-check-input {
+      margin-right: 10px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Navbar fissa in cima -->
+  <nav id="navbar-example2" class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+    <div class="container-fluid">
+      <!-- Logo con titolo -->
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="logo.png" style="width:50px; margin-right: 10px;" draggable="false">
+        <h1 class="mb-0"><span role="img" aria-label="fiore di ciliegio">🌸</span> NIPPON WORLD <span role="img"
+            aria-label="fiore di ciliegio">🌸</span></h1>
+      </a>
+
+      <!-- Menu di navigazione -->
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="btn btn-danger mx-1" href="#scrollspyHeading1">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-danger mx-1" href="#scrollspyHeading2">Programma</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-danger mx-1" href="#scrollspyHeading3">Biglietti</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-danger mx-1" href="#scrollspyHeading4">Contatti</a>
+        </li>
+      </ul>
+  </nav>
+
+  <!-- Per togliere lo sfondo -->
+  <div class="p-3 rounded-2" style="background-color: transparent;" tabindex="0">
+
+
+    <!-- Banner -->
+    <div class="banner">
+      <img src="./Progetto Evento Bootstrap.png" class="img-fluid rounded banner-img" alt="Banner" draggable="false">
+    </div>
+
+    <br>
+    <hr style="border: white;">
+
+    <!-- Countdown -->
+    <div id="countdown" class="countdown-box text-center p-4">
+      <h4 class="mb-3"><span role="img" aria-label="fiore di ciliegio">🌸</span> Prossimo Nippon World: <span role="img"
+          aria-label="fiore di ciliegio">🌸</span></h4>
+      <div class="d-flex justify-content-center gap-3">
+        <div class="time-box">
+          <span id="days">00</span><br><small>Giorni</small>
+        </div>
+        <div class="time-box">
+          <span id="hours">00</span><br><small>Ore</small>
+        </div>
+        <div class="time-box">
+          <span id="minutes">00</span><br><small>Minuti</small>
+        </div>
+        <div class="time-box">
+          <span id="seconds">00</span><br><small>Secondi</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <!-- Home -->
+  <div class="container">
+    <section class="container-section">
+      <div class="welcome text-center">
+        <h2 id="scrollspyHeading1">
+          <span role="img" aria-label="fiore di ciliegio">🌸</span> Home <span role="img" aria-label="fiore di ciliegio">🌸</span></h2>
+        <br>
+        <h4>Chi siamo</h4>
+        <p>
+          Nippon World è un evento di beneficienza promosso dall'Associazione Cultura e Tradizione Giapponese Italiana
+          (ACTGI),
+          che mira a far conoscere ogni aspetto del Giappone e a promuoverne cultura e tradizioni in tutta Italia.
+        </p>
+        <p>
+          Fondata dal giapponese Kobo Go Shirai e dall'italiana Giulia Di Mattei nel 2023, Nippon World organizza ogni
+          anno eventi di beneficienza, concerti, eventi culturali e tradizionali a tema Giappone.
+        </p>
+        <p>
+          Il ricavato dell'evento andrà interamente devoluto in beneficienza a Make-A-Wish Japan e
+          Italia.
+        </p>
+        <br>
+        <p><strong>Aiutiamo i sogni dei bambini!</strong></p>
+
+        <img src="make-a-wish-logo.png" alt="Make-A-Wish logo" style="width:150px;" draggable="false" class="mx-auto d-block">
+
+      </div>
+    </section>
+    <hr>
+  </div>
+
+  <!-- Programma -->
+  <div class="container">
+    <section class="container-section">
+      <div class="welcome">
+        <h2 id="scrollspyHeading2">
+          <span role="img" aria-label="fiore di ciliegio">🌸</span> Programma <span role="img" aria-label="fiore di ciliegio">🌸</span></h2>
+          <br>
+        <p>
+          Oltre al programma giornaliero, potete trovare tanti altri stand e bancarelle! Vi aspettiamo!<br>
+          <br>
+          <li><strong>Area Streetfood Goku:</strong> Qui potete trovare cibi salati come: kareraisu, omuraisu,
+            okonomiyaki, gyudon... e molti altri!</li>
+          <li><strong>Area Streetfood Doraemon:</strong> Qui potete trovare cibi dolci come: dorayaki, mochi, daifuku,
+            dango, taiyaki... e molti altri!</li>
+          <li><strong>Nippon Market:</strong> Qui potete trovare negozi di oggettistica e giocattoli tradizionali come:
+            daruma, kokeshi, bento box... e tanto altro!</li>
+          <li><strong>Garapon: la lotteria giapponese!</strong> Tenta la fortuna alla Booth 6 con il gioco tradizionale
+            a premi giapponese: garapon!<br></li>
+        </p>
+      </div>
+
+      <!-- Sezioni del programma -->
+       <!-- Programma 29 Febbraio -->
+      <div class="program-card">
+        <div class="row justify-content-center">
+          <div class="col">
+            <div class="card program-day-card" style="width: 55rem;">
+              <h2>29 Febbraio</h2>
+              <ul>
+                <li><strong>09:00</strong> Apertura Nippon World!</li>
+                <li><strong>10:00</strong> Workshop: Origami, con Ittoki Otoya - Booth 1, <b>Ingresso libero</b></li>
+                <li><strong>11:00</strong> A spasso per il Giappone 1: Honshu, con Ren Jinguji - Booth 4, <b>Ingresso
+                    libero</b></li>
+                <li><strong>13:00</strong> Workshop: Washoku, con Reiji Kotobuki & Ranmaru Kurosaki - Booth 2,
+                  <b>15€</b>
+                </li>
+                <li><strong>15:00</strong> Workshop: Wagashi, con Tokiya Ichinose - Booth 3, <b>10€</b></li>
+                <li><strong>16:00</strong> Cerimonia del Tè, con Masato Hijirikawa - Booth 3, <b>Ingresso libero</b>
+                </li>
+                <li><strong>17:30</strong> Dimostrazione Kendo, con Natsuki Shinomiya & Sho Kurusu - Palco 2,
+                  <b>Ingresso libero</b>
+                </li>
+                <li><strong>19:00</strong> Esibizione di Wagakki: Taiko e Kakko, con Taiko Drum Academy Kyoto - Palco 1,
+                  <b>Ingresso libero</b>
+                </li>
+                <li><strong>19:30</strong> Esibizione di Wagakki: Shamisen, Koto e Biwa, con String Club Yokohama -
+                  Palco 1, <b>Ingresso libero</b></li>
+                <li><strong>20:00</strong> Concerto J-pop "Shining Tour", con Starish - Palco 1, <b>Ingresso libero</b>
+                </li>
+                <li><strong>22:00</strong> Chiusura Nippon World... a domani!</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Programma 30 Febbraio -->
+      <div class="program-card">
+        <div class="row justify-content-center">
+          <div class="col">
+            <div class="card program-day-card" style="width: 55rem;">
+              <h2>30 Febbraio</h2>
+              <ul>
+                <li><strong>09:00</strong> Apertura Nippon World!</li>
+                <li><strong>10:00</strong> Workshop: Kokeshi & Daruma, con Ittoki Otoya - Booth 1, <b>10€</b></li>
+                <li><strong>11:00</strong> A spasso per il Giappone 2: Hokkaido, Shikoku e Kyushu con Ren Jinguji -
+                  Booth 4, <b>Ingresso libero</b></li>
+                <li><strong>13:00</strong> Workshop: Washoku, con Reiji Kotobuki & Ranmaru Kurosaki - Booth 2,
+                  <b>15€</b>
+                </li>
+                <li><strong>15:00</strong> Workshop: Wagashi, con Tokiya Ichinose - Booth 3, <b>10€</b></li>
+                <li><strong>16:00</strong> Cerimonia del Tè, con Masato Hijirikawa - Booth 3, <b>Ingresso libero</b>
+                </li>
+                <li><strong>17:30</strong> Dimostrazione Karate, con Natsuki Shinomiya & Sho Kurusu - Palco 2,
+                  <b>Ingresso libero</b>
+                </li>
+                <li><strong>19:00</strong> Esibizione di Wagakki: Shakuhachi, Sho e Nokan - Palco 1, <b>Ingresso
+                    libero</b></li>
+                <li><strong>19:30</strong> Esibizione di Teatro Kabuki + orchestra tradizionale, con Tokyo Bunkasai
+                  Acting - Palco 1, <b>20€</b></li>
+                <li><strong>21:00</strong> Concerto J-pop "Quartet Tour", con Quartet Night - Palco 1, <b>Ingresso
+                    libero</b></li>
+                <li><strong>22:00</strong> Chiusura Nippon World... ci vediamo il prossimo anno!</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- Biglietti -->
+    <div class="container">
+      <section class="container-section">
+        <div class="welcome">
+          <h2 id="scrollspyHeading3"><span role="img" aria-label="fiore di ciliegio">🌸</span> Biglietti <span role="img" aria-label="fiore di ciliegio">🌸</span></h2>
+          <br>
+          <p> I biglietti sono disponibili per l'acquisto sia sul sito che sul posto i giorni dell'evento.<br>
+            I bambini sotto i 10 anni entrano gratis!**<br>
+            <br>
+            **Ricordatevi di passare al banco informazioni per ritirare l'omaggio che Nippon World ha pensato per i più
+            piccoli!
+          </p>
+        </div>
+
+        <!-- Card Biglietto Intero -->
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                <div>
+                  <h2>Intero</h2>
+                </div>
+                <img class="intero" src="Intero.png" draggable="false">
+                <div class="card-body">
+                  <h4>10€</h4>
+                  <p><b>Età: 19 - 59</b><br>
+                    <hr>
+                  <p>Cos'è incluso nel biglietto:<br></p>
+                  <li>1 Dolcino e 1 bibita</li>
+                  <hr>
+                  <em>Il ricavo di questo biglietto andrà a<br>Make-A-Wish Japan e Italia.</em>
+                  </p>
+                  <div class="alert-container">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#prenotaModal"
+                      onclick="apriModale('Intero')">
+                      <i class="bi bi-cart"></i> Prenota!
+                    </button>
+                    <!-- Modale Bootstrap -->
+                    <div class="modal fade" id="prenotaModal" tabindex="-1" aria-labelledby="prenotaModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content"
+                          style="background-color: #fff0f5; border: 2px dashed #ffb6c1; border-radius: 20px;">
+                          <div class="modal-header">
+                            <h5 class="modal-title text-center w-100" id="prenotaModalLabel">Prenotazione online</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                              aria-label="Chiudi"></button>
+                          </div>
+                          <div class="modal-body text-center">
+                            <p>Vuoi proseguire con la prenotazione?</p>
+                            <!-- Checkbox giorno -->
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="checkbox29Feb">
+                              <label class="form-check-label" for="checkbox29Feb">29 Febbraio</label>
+                            </div>
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="checkbox30Feb">
+                              <label class="form-check-label" for="checkbox30Feb">30 Febbraio</label>
+                            </div>
+                            <!-- Selezione quantità -->
+                            <div class="mb-3">
+                              <label for="quantitaBiglietti" class="form-label">Seleziona quantità</label>
+                              <input type="number" id="quantitaBiglietti" class="form-control text-center mx-auto"
+                                value="1" min="1" style="width: 100px;" onchange="calcolaTotale()">
+                            </div>
+                            <button class="btn btn-danger mt-3">Scegli il metodo di pagamento!</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Biglietto Ridotto -->
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                <div>
+                  <h2>Ridotto</h2>
+                </div>
+                <img class="ridotto" src="Ridotto.png" draggable="false">
+                <div class="card-body">
+                  <h4>7€</h4>
+                  <p><b>Età: 11 - 18 & 60 +</b><br>
+                    <hr>
+                  <p>Cos'è incluso nel biglietto:<br></p>
+                  <li>1 Dolcino e 1 bibita</li>
+                  <hr>
+                  <em>Il ricavo di questo biglietto andrà a<br>Make-A-Wish Japan e Italia.</em>
+                  </p>
+                  <div class="alert-container">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#prenotaModal"
+                      onclick="apriModale('Intero')">
+                      <i class="bi bi-cart"></i> Prenota!
+                    </button>
+                    <!-- Modale Bootstrap -->
+                    <div class="modal fade" id="prenotaModal" tabindex="-1" aria-labelledby="prenotaModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content"
+                          style="background-color: #fff0f5; border: 2px dashed #ffb6c1; border-radius: 20px;">
+                          <div class="modal-header">
+                            <h5 class="modal-title text-center w-100" id="prenotaModalLabel">Prenotazione online</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                              aria-label="Chiudi"></button>
+                          </div>
+                          <div class="modal-body text-center">
+                            <p>Vuoi proseguire con la prenotazione?</p>
+                            <!-- Checkbox giorno -->
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="checkbox29Feb">
+                              <label class="form-check-label" for="checkbox29Feb">29 Febbraio</label>
+                            </div>
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="checkbox30Feb">
+                              <label class="form-check-label" for="checkbox30Feb">30 Febbraio</label>
+                            </div>
+                            <!-- Selezione quantità -->
+                            <div class="mb-3">
+                              <label for="quantitaBiglietti" class="form-label">Seleziona quantità</label>
+                              <input type="number" id="quantitaBiglietti" class="form-control text-center mx-auto"
+                                value="1" min="1" style="width: 100px;" onchange="calcolaTotale()">
+                            </div>
+                            <button class="btn btn-danger mt-3">Scegli il metodo di pagamento!</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Biglietto Vip -->
+            <div class="col">
+              <div class="card" style="width: 18rem;">
+                <div>
+                  <h2>Shogun</h2>
+                </div>
+                <img class="shogun" src="Shogun.png" draggable="false">
+                <div class="card-body">
+                  <h4>50€</h4>
+                  <p><b>Vip Pass</b><br>
+                    <hr>
+                  <ul class="shogun-list">
+                    <p>Cos'è incluso nel biglietto:<br></p>
+                    <li>3 Dolcini e 1 bibita<br></li>
+                    <li>1 Bento Washoku<br></li>
+                    <li>1 Giocattolo tradizionale giapponese<br></li>
+                    <li>5 Giri alla lotteria giapponese<br></li>
+                    <li>Partecipazione gratuita a 3 workshop</li>
+                  </ul>
+                  <hr>
+                  <em>Il ricavo di questo biglietto andrà a<br>Make-A-Wish Japan e Italia.</em>
+                  </p>
+                  <div class="alert-container">
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#prenotaModal"
+                      onclick="apriModale('Intero')">
+                      <i class="bi bi-cart"></i> Prenota!
+                    </button>
+                    <!-- Modale Bootstrap -->
+                    <div class="modal fade" id="prenotaModal" tabindex="-1" aria-labelledby="prenotaModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content"
+                          style="background-color: #fff0f5; border: 2px dashed #ffb6c1; border-radius: 20px;">
+                          <div class="modal-header">
+                            <h5 class="modal-title text-center w-100" id="prenotaModalLabel">Prenotazione online</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                              aria-label="Chiudi"></button>
+                          </div>
+                          <div class="modal-body text-center">
+                            <p>Vuoi proseguire con la prenotazione?</p>
+                            <!-- Checkbox giorno -->
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="checkbox29Feb">
+                              <label class="form-check-label" for="checkbox29Feb">29 Febbraio</label>
+                            </div>
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="checkbox30Feb">
+                              <label class="form-check-label" for="checkbox30Feb">30 Febbraio</label>
+                            </div>
+                            <!-- Selezione quantità -->
+                            <div class="mb-3">
+                              <label for="quantitaBiglietti" class="form-label">Seleziona quantità</label>
+                              <input type="number" id="quantitaBiglietti" class="form-control text-center mx-auto"
+                                value="1" min="1" style="width: 100px;" onchange="calcolaTotale()">
+                            </div>
+                            <button class="btn btn-danger mt-3">Scegli il metodo di pagamento!</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+    </div>
+
+    <hr>
+
+    <!-- Carosello Recensioni -->
+    <section class="container-section">
+      <div class="reviews">
+        <h4><span role="img" aria-label="fiore di ciliegio">🌸</span> Recensioni delle edizioni passate <span role="img"
+            aria-label="fiore di ciliegio">🌸</span></h4>
+        <div id="carouselExampleControls" class="carousel slide text-center carousel-dark" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="rounded-circle shadow-1-strong mb-4" src="akitino.jpeg" style="width: 150px;" />
+              <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                  <h5 class="mb-3">Romeo</h5>
+                  <p>Edizione 2025</p>
+                  <p class="text-muted">
+                    <i class="fas fa-quote-left pe-2"></i>
+                    Anche quest'anno Nippon World mi ha sorpreso! Evento incredibile!<br>Tappa fissa dal 2023.
+                  </p>
+                </div>
+              </div>
+              <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+                <div class="reviews">
+                  <span class="star">&#9733;</span>
+                  <span class="star">&#9733;</span>
+                  <span class="star">&#9733;</span>
+                  <span class="star">&#9733;</span>
+                  <span class="star">&#9733;</span>
+                </div>
+              </ul>
+            </div>
+            <div class="carousel-item">
+              <img class="rounded-circle shadow-1-strong mb-4" src="akitino.jpeg" style="width: 150px;" />
+              <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                  <h5 class="mb-3">Genoveffa</h5>
+                  <p>Edizione 2024</p>
+                  <p class="text-muted">
+                    <i class="fas fa-quote-left pe-2"></i>
+                    Due giorni di eventi, cibo e musica a tema Giappone. Stupendo ed educativo.<br>
+                    Un must per gli appassionati e una bella scoperta per chi non conosce questo splendido paese!
+                  </p>
+                </div>
+              </div>
+              <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+                <div class="reviews">
+                  <span class="star">&#9733;</span>
+                  <span class="star">&#9733;</span>
+                  <span class="star">&#9733;</span>
+                  <span class="star">&#9733;</span>
+                  <span class="star">&#9733;</span>
+                </div>
+              </ul>
+            </div>
+            <div class="carousel-item">
+              <img class="rounded-circle shadow-1-strong mb-4" src="akitino.jpeg" style="width: 150px;" />
+              <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                  <h5 class="mb-3">Anastasia</h5>
+                  <p>Edizione 2023</p>
+                  <p class="text-muted">
+                    <i class="fas fa-quote-left pe-2"></i>
+                    Finalmente un evento istruttivo che parla della vera tradizione e cultura nipponica.<br>
+                    Il Giappone non è solo sushi! Grazie Nippon World!
+                  </p>
+                </div>
+              </div>
+              <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+                <div class="reviews">
+                  <span class="star">&#9733;</span>
+                  <span class="star">&#9733;</span>
+                  <span class="star">&#9733;</span>
+                  <span class="star">&#9733;</span>
+                  <span class="star">&#9733;</span>
+                </div>
+              </ul>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Indietro</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Avanti</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- Form Contatti con Mappa -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <h2 id="scrollspyHeading4"><span role="img" aria-label="fiore di ciliegio">🌸</span> Domande? Contattaci qui! <span role="img" aria-label="fiore di ciliegio">🌸</span></h2>
+            <form id="contactForm">
+              <div class="mb-3">
+                <label for="name" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="name" required>
+                <div class="form-feedback" id="nameFeedback"></div>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required>
+                <div class="form-feedback" id="emailFeedback"></div>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Messaggio</label>
+                <textarea class="form-control" id="message" rows="4" required></textarea>
+                <div class="form-feedback" id="messageFeedback"></div>
+              </div>
+              <button type="submit" class="btn btn-danger">Invia!</button>
+              <div class="form-success" id="successMessage"></div>
+            </form>
+          </div>
+          <div class="col-lg-6">
+            <h2><span role="img" aria-label="fiore di ciliegio">🌸</span> Dove siamo: <span role="img"
+                aria-label="fiore di ciliegio">🌸</span></h2>
+            <h5>Parco del Valentino, Torino</h5>
+            <p>Troverai Nippon World all'ingresso del parco vicino al monumento!</p>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d848.1211184749501!2d7.688155422013559!3d45.05876748212474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47886d5d8db6a347%3A0x1a1c822b01924b5!2sMonumento%20a%20Massimo%20D&#39;Azeglio!5e0!3m2!1sit!2sit!4v1745687115336!5m2!1sit!2sit"
+              width="450" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer class="text-center">
+      <div class="container p-4">
+        <div class="mb-4">
+          <!-- Icona Facebook -->
+          <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"><i
+              class="bi bi-facebook"></i></a>
+          <!-- Icona Instagram -->
+          <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button"><i
+              class="bi bi-instagram"></i></a>
+        </div>
+
+        <!-- Form per Newsletter -->
+        <form action="">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+              <h6><span role="img" aria-label="fiore di ciliegio">🌸</span> Rimani sempre aggiornato: iscriviti alla
+                newsletter! <span role="img" aria-label="fiore di ciliegio">🌸</span></h6>
+              <br>
+              <div class="form-outline mb-3">
+                <input type="email" id="form" class="form-control" placeholder="La tua email" />
+              </div>
+
+              <!-- Checkbox Form -->
+              <div class="form-check d-flex justify-content-center mb-3">
+                <input class="form-check-input me-2" type="checkbox" id="checkbox" />
+                <label class="form-check-label" for="checkbox">
+                  Accetto termini e condizioni
+                </label>
+              </div>
+              <div class="col-auto">
+                <button type="submit" class="btn btn-danger mb-4">
+                  Iscrivimi!
+                </button>
+              </div>
+            </div>
+        </form>
+        </section>
+        <div class="text-center p-3">
+          &copy; 2023 Nippon World | Associazione Cultura e Tradizione Giapponese Italiana | <a
+            href="https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/36573">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <!-- Script Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+
+    <!-- Script Countdown, con JavaScript -->
+    <script>
+      //Data
+      const countDownDate = new Date().getTime() + (309 * 24 * 60 * 60 * 1000);
+
+      //Intervallo
+      const x = setInterval(function () {
+        //Data e ora di oggi
+        const now = new Date().getTime();
+
+        //Countdown dal giorno in cui apri la pagina al giorno dell'evento
+        const distance = countDownDate - now;
+
+        //Calcoli
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        //Risultato a video
+        document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+        document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+        document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+        document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+
+        //Per scrivere qualcosa quando il countdown finisce
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("days").innerHTML = "00";
+          document.getElementById("hours").innerHTML = "00";
+          document.getElementById("minutes").innerHTML = "00";
+          document.getElementById("seconds").innerHTML = "00";
+        }
+      }, 1000);
+    </script>
+
+    <!-- Modale per Pop-up Biglietti -->
+    <script>
+      function apriModale(tipo) {
+        document.getElementById('tipoBiglietto').textContent = tipo;
+      }
+    </script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
+
+<!-- Giulia Di Mattei -->
